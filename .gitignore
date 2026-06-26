@@ -1,0 +1,8 @@
+.venv
+
+pyache
+.python-version
+pyproject.toml
+uv.lock
+
+artifacts

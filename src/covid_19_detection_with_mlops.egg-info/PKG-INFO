@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: covid-19-detection-with-mlops
+Version: 0.1.0
+Summary: Add your description here
+Home-page: https://github.com/shu7620/Covid-19_detection_using_CNN
+Author: shu7620
+Author-email: your_email@example.com
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page

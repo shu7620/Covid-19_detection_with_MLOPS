@@ -1,0 +1,5 @@
+[2026-06-26 21:25:46,411: INFO: main: Attempting division...]
+[2026-06-26 21:25:46,411: ERROR: main: An error occurred during division computation]
+[2026-06-26 21:27:10,875: INFO: main: Attempting division...]
+[2026-06-26 21:27:10,875: ERROR: main: An error occurred during division computation]
+[2026-06-26 21:27:10,875: INFO: exception: Error occurred in python script name [D:\Revision\Covid-19_detection_with_MLOPS\main.py] line number [8] error message [division by zero]]
