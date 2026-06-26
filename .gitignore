@@ -1,8 +1,12 @@
 .venv
 
-pyache
+__pyache__
 .python-version
 pyproject.toml
 uv.lock
 
+artifacts
+
+
+.env
 artifacts

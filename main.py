@@ -1,19 +1,15 @@
 from cnnClassifier import logger
-from cnnClassifier.exception import CustomException
-import sys
+from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 
-def divide_numbers(a, b):
-    try:
-        logger.info("Attempting division...")
-        result = a / b
-        return result
-    except Exception as e:
-        # Capture the exception with sys to extract exact file line numbers
-        logger.error("An error occurred during division computation")
-        raise CustomException(e, sys)
 
-if __name__ == "__main__":
+
+STAGE_NAME= 'Data Ingestion stage'
+if __name__ == '__main__':
     try:
-        divide_numbers(10, 0)
+        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+        obj = DataIngestionTrainingPipeline()
+        obj.main()
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
-        print(e)
+        logger.exception(e)
+        raise e

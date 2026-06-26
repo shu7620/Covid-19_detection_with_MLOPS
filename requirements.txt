@@ -28,4 +28,7 @@ python-box
 pytest
 tox
 
+kaggle
+python-dotenv
+
 -e .

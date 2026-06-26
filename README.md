@@ -1,0 +1,1 @@
+mkdir -p ~/.kaggle && echo KGAT_0c0b11028bf86f319ee20d4a456cb0d8 > ~/.kaggle/access_token && chmod 600 ~/.kaggle/access_token
