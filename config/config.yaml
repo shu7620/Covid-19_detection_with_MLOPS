@@ -6,3 +6,11 @@ data_ingestion:
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion/raw_extracted
   final_dataset_dir: artifacts/data_ingestion/dataset
+
+data_validation:
+  root_dir: artifacts/data_validation
+  unzip_data_dir: artifacts/data_ingestion/dataset
+  STATUS_FILE: artifacts/data_validation/status.txt
+  all_classes:
+    - COVID
+    - Normal

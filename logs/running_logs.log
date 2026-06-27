@@ -47,3 +47,55 @@ ValueError: yaml file is empty
 [2026-06-27 00:06:34,490: INFO: 1356313550: >>>>>> stage Data Ingestion Stage completed <<<<<<
 
 x==========x]
+[2026-06-27 11:10:59,174: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-06-27 11:10:59,194: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 11:10:59,215: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 11:10:59,235: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 11:10:59,236: INFO: common: created directory at: artifacts]
+[2026-06-27 11:10:59,236: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-27 11:10:59,236: INFO: Data_Ingestion: Authenticating with Kaggle API...]
+[2026-06-27 11:10:59,239: INFO: Data_Ingestion: Downloading Kaggle dataset: tawsifurrahman/covid19-radiography-database]
+[2026-06-27 11:15:02,407: INFO: Data_Ingestion: Dataset downloaded successfully to artifacts\data_ingestion\data.zip]
+[2026-06-27 11:15:47,592: INFO: Data_Ingestion: Extracted zip file into: artifacts\data_ingestion\raw_extracted]
+[2026-06-27 11:15:47,602: INFO: Data_Ingestion: Restructuring dataset to standard format...]
+[2026-06-27 11:15:47,602: INFO: Data_Ingestion: Moving images from artifacts\data_ingestion\raw_extracted\COVID-19_Radiography_Dataset\COVID\images to artifacts\data_ingestion\dataset\COVID...]
+[2026-06-27 11:15:49,274: INFO: Data_Ingestion: Moving images from artifacts\data_ingestion\raw_extracted\COVID-19_Radiography_Dataset\Normal\images to artifacts\data_ingestion\dataset\Normal...]
+[2026-06-27 11:15:58,401: INFO: Data_Ingestion: Cleaned up raw temporary extraction files.]
+[2026-06-27 11:15:58,401: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-06-27 11:22:37,538: INFO: 2320197787: >>>>>> stage Data Validation Stage started <<<<<<]
+[2026-06-27 11:22:37,557: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 11:22:37,560: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 11:22:37,562: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 11:22:37,564: INFO: common: created directory at: artifacts]
+[2026-06-27 11:22:37,564: INFO: common: created directory at: artifacts/data_validation]
+[2026-06-27 11:22:37,566: INFO: 585940061: All expected classes found. Data validation successful.]
+[2026-06-27 11:22:37,566: INFO: 2320197787: >>>>>> stage Data Validation Stage completed <<<<<<
+
+x==========x]
+[2026-06-27 11:30:42,814: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-06-27 11:30:42,817: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 11:30:42,817: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 11:30:42,817: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 11:30:42,817: INFO: common: created directory at: artifacts]
+[2026-06-27 11:30:42,817: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-27 11:30:42,817: INFO: Data_Ingestion: File already exists. Size: ~ 796903 KB]
+[2026-06-27 11:31:04,969: INFO: Data_Ingestion: Extracted zip file into: artifacts\data_ingestion\raw_extracted]
+[2026-06-27 11:31:04,988: INFO: Data_Ingestion: Restructuring dataset to standard format...]
+[2026-06-27 11:31:04,990: INFO: Data_Ingestion: Moving images from artifacts\data_ingestion\raw_extracted\COVID-19_Radiography_Dataset\COVID\images to artifacts\data_ingestion\dataset\COVID...]
+[2026-06-27 11:31:08,390: INFO: Data_Ingestion: Moving images from artifacts\data_ingestion\raw_extracted\COVID-19_Radiography_Dataset\Normal\images to artifacts\data_ingestion\dataset\Normal...]
+[2026-06-27 11:31:20,988: INFO: Data_Ingestion: Cleaned up raw temporary extraction files.]
+[2026-06-27 11:31:20,988: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-06-27 11:31:20,988: INFO: main: >>>>>> stage Data Validation stage started <<<<<<]
+[2026-06-27 11:31:20,995: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 11:31:20,995: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 11:31:20,995: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 11:31:20,995: INFO: common: created directory at: artifacts]
+[2026-06-27 11:31:20,995: INFO: common: created directory at: artifacts/data_validation]
+[2026-06-27 11:31:20,995: INFO: Data_Validation: All expected classes found. Data validation successful.]
+[2026-06-27 11:31:20,995: INFO: main: >>>>>> stage Data Validation stage completed <<<<<<
+
+x==========x]
