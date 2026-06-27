@@ -3,6 +3,7 @@ from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import DataIngestionConfig
 from cnnClassifier.entity.config_entity import DataValidationConfig
 from cnnClassifier.entity.config_entity import DataTransformationConfig
+from cnnClassifier.entity.config_entity import TrainingConfig
 
 class ConfigurationManager:
     def __init__(
@@ -63,5 +64,25 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+    def get_training_config(self) -> TrainingConfig:
+        config = self.config.training
+        params = self.params
+
+        create_directories([config.root_dir])
+
+        training_config = TrainingConfig(
+            root_dir=Path(config.root_dir),
+            trained_model_path= Path(config.trained_model_path),
+            training_data= Path(config.training_data),
+            params_epochs= params.EPOCHS,
+            params_batch_size= params.BATCH_SIZE,
+            params_is_augmentation= params.AUGMENTATION,
+            params_image_size= params.IMAGE_SIZE,
+            params_classes= params.CLASSES    
+        )
+
+        return training_config
+
 
      

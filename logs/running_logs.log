@@ -99,3 +99,105 @@ x==========x]
 [2026-06-27 11:31:20,995: INFO: main: >>>>>> stage Data Validation stage completed <<<<<<
 
 x==========x]
+[2026-06-27 15:36:03,234: INFO: 3634220854: >>>>>> stage Data Transformation Stage started <<<<<<]
+[2026-06-27 15:36:03,247: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 15:36:03,255: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 15:36:03,258: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 15:36:03,260: INFO: common: created directory at: artifacts]
+[2026-06-27 15:36:03,261: INFO: common: created directory at: artifacts/data_transformation]
+[2026-06-27 15:36:03,262: INFO: 1329139506: Loading and processing data from artifacts\data_ingestion\dataset]
+[2026-06-27 15:36:03,759: INFO: 1329139506: Applying normalization transformation...]
+[2026-06-27 15:36:03,818: INFO: 1329139506: Training Batch Image Shape: (None, 224, 224, 3)]
+[2026-06-27 15:36:03,819: INFO: 1329139506: Training Batch Label Shape: (None, 2)]
+[2026-06-27 15:36:03,820: INFO: 1329139506: Validation Batch Image Shape: (None, 224, 224, 3)]
+[2026-06-27 15:36:03,823: INFO: 1329139506: Saving transformed datasets...]
+[2026-06-27 15:36:36,904: INFO: 1329139506: Data Preprocessing and Transformation completed successfully.]
+[2026-06-27 15:36:36,904: INFO: 3634220854: >>>>>> stage Data Transformation Stage completed <<<<<<
+
+x==========x]
+[2026-06-27 22:18:20,245: INFO: 1057139548: >>>>>> stage Model Training Stage started <<<<<<]
+[2026-06-27 22:18:20,262: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 22:18:20,263: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 22:18:20,273: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 22:18:20,275: INFO: common: created directory at: artifacts]
+[2026-06-27 22:18:20,276: INFO: common: created directory at: artifacts/training]
+[2026-06-27 22:18:20,328: ERROR: 1057139548: tf.data snapshot element_spec file not found: artifacts\data_ingestion\dataset\dataset_spec.pb.]
+Traceback (most recent call last):
+  File "C:\Users\shubh\AppData\Local\Temp\ipykernel_17180\1057139548.py", line 7, in <module>
+    model_trainer.train()
+  File "C:\Users\shubh\AppData\Local\Temp\ipykernel_17180\2796456759.py", line 13, in train
+    train_ds = tf.data.Dataset.load(str(self.config.training_data))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\tensorflow\python\data\ops\dataset_ops.py", line 1846, in load
+    return load_op._load(
+           ^^^^^^^^^^^^^^
+  File "d:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\tensorflow\python\data\ops\load_op.py", line 68, in _load
+    element_spec = _load_element_spec(path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\tensorflow\python\data\ops\load_op.py", line 155, in _load_element_spec
+    raise errors.NotFoundError(
+tensorflow.python.framework.errors_impl.NotFoundError: tf.data snapshot element_spec file not found: artifacts\data_ingestion\dataset\dataset_spec.pb.
+[2026-06-27 23:02:04,291: INFO: 1057139548: >>>>>> stage Model Training Stage started <<<<<<]
+[2026-06-27 23:02:04,307: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 23:02:04,310: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 23:02:04,312: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 23:02:04,314: INFO: common: created directory at: artifacts]
+[2026-06-27 23:02:04,315: INFO: common: created directory at: artifacts/training]
+[2026-06-27 23:02:04,718: WARNING: config: TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.]
+[2026-06-27 23:06:15,040: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-06-27 23:06:16,070: INFO: 1057139548: >>>>>> stage Model Training Stage completed <<<<<<
+
+x==========x]
+[2026-06-27 23:30:18,912: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-06-27 23:30:18,946: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 23:30:18,946: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 23:30:18,954: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 23:30:18,954: INFO: common: created directory at: artifacts]
+[2026-06-27 23:30:18,954: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-06-27 23:30:18,954: INFO: Data_Ingestion: Authenticating with Kaggle API...]
+[2026-06-27 23:30:18,954: INFO: Data_Ingestion: Downloading Kaggle dataset: tawsifurrahman/covid19-radiography-database]
+[2026-06-27 23:33:55,080: INFO: Data_Ingestion: Dataset downloaded successfully to artifacts\data_ingestion\data.zip]
+[2026-06-27 23:34:21,264: INFO: Data_Ingestion: Extracted zip file into: artifacts\data_ingestion\raw_extracted]
+[2026-06-27 23:34:21,271: INFO: Data_Ingestion: Restructuring dataset to standard format...]
+[2026-06-27 23:34:21,276: INFO: Data_Ingestion: Moving images from artifacts\data_ingestion\raw_extracted\COVID-19_Radiography_Dataset\COVID\images to artifacts\data_ingestion\dataset\COVID...]
+[2026-06-27 23:34:22,789: INFO: Data_Ingestion: Moving images from artifacts\data_ingestion\raw_extracted\COVID-19_Radiography_Dataset\Normal\images to artifacts\data_ingestion\dataset\Normal...]
+[2026-06-27 23:34:33,521: INFO: Data_Ingestion: Cleaned up raw temporary extraction files.]
+[2026-06-27 23:34:33,521: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-06-27 23:34:33,521: INFO: main: >>>>>> stage Data Validation stage started <<<<<<]
+[2026-06-27 23:34:33,528: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 23:34:33,531: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 23:34:33,531: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 23:34:33,531: INFO: common: created directory at: artifacts]
+[2026-06-27 23:34:33,531: INFO: common: created directory at: artifacts/data_validation]
+[2026-06-27 23:34:33,535: INFO: Data_Validation: All expected classes found. Data validation successful.]
+[2026-06-27 23:34:33,535: INFO: main: >>>>>> stage Data Validation stage completed <<<<<<
+
+x==========x]
+[2026-06-27 23:34:33,535: INFO: main: >>>>>> stage Data Transformation Stage started <<<<<<]
+[2026-06-27 23:34:33,535: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 23:34:33,535: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 23:34:33,535: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 23:34:33,543: INFO: common: created directory at: artifacts]
+[2026-06-27 23:34:33,543: INFO: common: created directory at: artifacts/data_transformation]
+[2026-06-27 23:34:33,543: INFO: Data_Transformation: Loading and processing data from artifacts\data_ingestion\dataset]
+[2026-06-27 23:34:34,355: INFO: Data_Transformation: Applying normalization transformation...]
+[2026-06-27 23:34:34,439: INFO: Data_Transformation: Training Batch Image Shape: (None, 224, 224, 3)]
+[2026-06-27 23:34:34,439: INFO: Data_Transformation: Training Batch Label Shape: (None, 2)]
+[2026-06-27 23:34:34,439: INFO: Data_Transformation: Validation Batch Image Shape: (None, 224, 224, 3)]
+[2026-06-27 23:34:34,442: INFO: Data_Transformation: Saving transformed datasets...]
+[2026-06-27 23:35:15,196: INFO: Data_Transformation: Data Preprocessing and Transformation completed successfully.]
+[2026-06-27 23:35:15,199: INFO: main: >>>>>> stage Data Transformation Stage completed <<<<<<
+
+x==========x]
+[2026-06-27 23:35:15,199: INFO: main: >>>>>> stage Model Training Stage started <<<<<<]
+[2026-06-27 23:35:15,201: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-27 23:35:15,206: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-27 23:35:15,207: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-27 23:35:15,207: INFO: common: created directory at: artifacts]
+[2026-06-27 23:35:15,207: INFO: common: created directory at: artifacts/training]
+[2026-06-27 23:35:15,395: WARNING: config: TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.]
+[2026-06-27 23:38:48,601: INFO: main: >>>>>> stage Model Training Stage completed <<<<<<
+
+x==========x]

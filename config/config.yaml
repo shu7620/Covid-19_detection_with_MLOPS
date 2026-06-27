@@ -20,3 +20,8 @@ data_transformation:
   data_path: artifacts/data_ingestion/dataset
   train_dataset_path: artifacts/data_transformation/train_ds
   val_dataset_path: artifacts/data_transformation/val_ds
+
+training:
+  root_dir: artifacts/training
+  training_data: artifacts/data_transformation/train_ds
+  trained_model_path: artifacts/training/model.keras
