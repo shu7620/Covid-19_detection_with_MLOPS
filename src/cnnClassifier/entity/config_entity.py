@@ -16,3 +16,13 @@ class DataValidationConfig:
     unzip_data_dir: Path
     STATUS_FILE: str
     all_classes: list
+    
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    data_path: Path
+    train_dataset_path: Path
+    val_dataset_path: Path
+    params_image_size: list
+    params_batch_size: int
+    params_validation_split: float

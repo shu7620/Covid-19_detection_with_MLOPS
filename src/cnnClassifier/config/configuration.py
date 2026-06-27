@@ -2,6 +2,7 @@ from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import DataIngestionConfig
 from cnnClassifier.entity.config_entity import DataValidationConfig
+from cnnClassifier.entity.config_entity import DataTransformationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -44,5 +45,23 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        params = self.params
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            train_dataset_path=Path(config.train_dataset_path),
+            val_dataset_path=Path(config.val_dataset_path),
+            params_image_size=params.IMAGE_SIZE,
+            params_batch_size=params.BATCH_SIZE,
+            params_validation_split=params.VALIDATION_SPLIT
+        )
+
+        return data_transformation_config
 
      

@@ -14,3 +14,9 @@ data_validation:
   all_classes:
     - COVID
     - Normal
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/data_ingestion/dataset
+  train_dataset_path: artifacts/data_transformation/train_ds
+  val_dataset_path: artifacts/data_transformation/val_ds

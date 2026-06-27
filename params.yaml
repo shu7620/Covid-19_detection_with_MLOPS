@@ -1,8 +1,9 @@
 AUGMENTATION: True
-IMAGE_SIZE: [224, 224, 3] # Standard size for models like VGG16/ResNet
+IMAGE_SIZE: [224, 224, 3]
 BATCH_SIZE: 16
 INCLUDE_TOP: False
 EPOCHS: 1
 CLASSES: 2
 WEIGHTS: imagenet
 LEARNING_RATE: 0.01
+VALIDATION_SPLIT: 0.20  # Added for data transformation
