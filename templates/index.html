@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COVID-19 Chest X-Ray Diagnosis System</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; text-align: center; background-color: #f4f6f9; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; }
+        input[type="file"] { margin: 20px 0; }
+        button { background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #2980b9; }
+        #resultBox { margin-top: 30px; padding: 15px; border-radius: 4px; display: none; font-size: 18px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>COVID-19 Chest X-Ray Screening</h2>
+        <p>Upload a clean digital front-facing chest X-ray image image to execute pipeline diagnostic classifications.</p>
+        
+        <form id="uploadForm">
+            <input type="file" id="imageFile" accept="image/*" required><br>
+            <button type="submit">Execute Classification</button>
+        </form>
+
+        <div id="resultBox"></div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('imageFile');
+            const resultBox = document.getElementById('resultBox');
+            
+            if (fileInput.files.length === 0) return;
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            resultBox.style.display = 'block';
+            resultBox.style.background = '#f1f2f6';
+            resultBox.style.color = '#333';
+            resultBox.innerText = "Processing analysis layers...";
+
+            try {
+                const response = await fetch('/predict', { method: 'POST', body: formData });
+                const data = await response.json();
+                
+                if (data.error) {
+                    resultBox.style.background = '#e74c3c';
+                    resultBox.style.color = 'white';
+                    resultBox.innerText = "Error: " + data.error;
+                } else {
+                    const isPositive = data.prediction.includes("COVID-19");
+                    resultBox.style.background = isPositive ? '#df473c' : '#2ecc71';
+                    resultBox.style.color = 'white';
+                    resultBox.innerText = `Diagnosis: ${data.prediction} (${data.confidence} Confidence)`;
+                }
+            } catch (err) {
+                resultBox.style.background = '#e74c3c';
+                resultBox.style.color = 'white';
+                resultBox.innerText = "Failed to connect to backend engine.";
+            }
+        });
+    </script>
+</body>
+</html>

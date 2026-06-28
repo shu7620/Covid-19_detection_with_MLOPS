@@ -252,3 +252,99 @@ x==========x]
 [2026-06-28 15:45:26,642: INFO: main: >>>>>> stage Model Training Stage completed <<<<<<
 
 x==========x]
+[2026-06-28 19:43:05,360: INFO: 3550827135: >>>>>> stage Evaluation Stage started <<<<<<]
+[2026-06-28 19:43:05,363: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-28 19:43:05,375: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-28 19:43:05,379: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-28 19:43:05,381: INFO: common: created directory at: artifacts]
+[2026-06-28 19:43:05,382: INFO: common: created directory at: artifacts/model_evaluation]
+[2026-06-28 19:43:05,384: INFO: common: created directory at: artifacts/model_evaluation/plots]
+[2026-06-28 19:43:05,386: INFO: 1582209500: Loading validation data and trained model assets...]
+[2026-06-28 19:43:05,589: ERROR: 3550827135: [Errno 2] Unable to synchronously open file (unable to open file: name = 'artifacts\training\model.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)]
+Traceback (most recent call last):
+  File "C:\Users\shubh\AppData\Local\Temp\ipykernel_30624\3550827135.py", line 7, in <module>
+    model_evaluation.evaluate()
+  File "C:\Users\shubh\AppData\Local\Temp\ipykernel_30624\1582209500.py", line 26, in evaluate
+    model = tf.keras.models.load_model(str(self.config.model_path))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\keras\src\saving\saving_api.py", line 197, in load_model
+    return legacy_h5_format.load_model_from_hdf5(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\keras\src\legacy\saving\legacy_h5_format.py", line 120, in load_model_from_hdf5
+    f = h5py.File(filepath, mode="r")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\h5py\_hl\files.py", line 564, in __init__
+    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\h5py\_hl\files.py", line 238, in make_fid
+    fid = h5f.open(name, flags, fapl=fapl)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h5py/_objects.pyx", line 56, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 57, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 102, in h5py.h5f.open
+FileNotFoundError: [Errno 2] Unable to synchronously open file (unable to open file: name = 'artifacts\training\model.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
+[2026-06-28 19:44:21,733: INFO: 3550827135: >>>>>> stage Evaluation Stage started <<<<<<]
+[2026-06-28 19:44:21,745: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-06-28 19:44:21,747: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-06-28 19:44:21,748: INFO: common: yaml file: schema.yaml loaded successfully]
+[2026-06-28 19:44:21,749: INFO: common: created directory at: artifacts]
+[2026-06-28 19:44:21,749: INFO: common: created directory at: artifacts/model_evaluation]
+[2026-06-28 19:44:21,750: INFO: common: created directory at: artifacts/model_evaluation/plots]
+[2026-06-28 19:44:21,750: INFO: 1582209500: Loading validation data and trained model assets...]
+[2026-06-28 19:44:21,969: WARNING: config: TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.]
+[2026-06-28 19:44:22,776: INFO: 1582209500: Generating predictions across test dataset tensors...]
+[2026-06-28 19:44:39,488: INFO: 1582209500: Calling internal plotting utilities to isolate diagnostic assets...]
+[2026-06-28 19:44:43,504: INFO: 1582209500: Logging runtime parameters and diagnostic metrics to MLflow...]
+[2026-06-28 19:49:08,884: INFO: 1582209500: Evaluation metrics successfully tracked and artifacts archived.]
+[2026-06-28 19:49:08,884: INFO: 3550827135: >>>>>> stage Evaluation Stage completed <<<<<<
+
+x==========x]
+[2026-06-28 20:59:00,651: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.29.61:8080]
+[2026-06-28 20:59:00,652: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2026-06-28 20:59:06,719: INFO: _internal: 127.0.0.1 - - [28/Jun/2026 20:59:06] "GET / HTTP/1.1" 200 -]
+[2026-06-28 20:59:06,839: INFO: _internal: 127.0.0.1 - - [28/Jun/2026 20:59:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2026-06-28 21:00:04,339: INFO: prediction: Initializing prediction pipeline inference execution...]
+[2026-06-28 21:00:04,340: ERROR: app: Inference failure encountered: [Errno 2] Unable to synchronously open file (unable to open file: name = 'artifacts\training\model.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)]
+Traceback (most recent call last):
+  File "D:\Revision\Covid-19_detection_with_MLOPS\app.py", line 36, in predict_route
+    prediction_result = pipeline.predict()
+                        ^^^^^^^^^^^^^^^^^^
+  File "D:\Revision\Covid-19_detection_with_MLOPS\src\cnnClassifier\pipeline\prediction.py", line 18, in predict
+    model = load_model(model_path)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\keras\src\saving\saving_api.py", line 197, in load_model
+    return legacy_h5_format.load_model_from_hdf5(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\keras\src\legacy\saving\legacy_h5_format.py", line 120, in load_model_from_hdf5
+    f = h5py.File(filepath, mode="r")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\h5py\_hl\files.py", line 564, in __init__
+    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Revision\Covid-19_detection_with_MLOPS\.venv\Lib\site-packages\h5py\_hl\files.py", line 238, in make_fid
+    fid = h5f.open(name, flags, fapl=fapl)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h5py/_objects.pyx", line 56, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 57, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 102, in h5py.h5f.open
+FileNotFoundError: [Errno 2] Unable to synchronously open file (unable to open file: name = 'artifacts\training\model.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
+[2026-06-28 21:00:04,342: INFO: _internal: 127.0.0.1 - - [28/Jun/2026 21:00:04] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -]
+[2026-06-28 21:00:49,836: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.29.61:8080]
+[2026-06-28 21:00:49,836: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2026-06-28 21:00:52,180: INFO: _internal: 127.0.0.1 - - [28/Jun/2026 21:00:52] "GET / HTTP/1.1" 200 -]
+[2026-06-28 21:00:59,169: INFO: prediction: Initializing prediction pipeline inference execution...]
+[2026-06-28 21:00:59,336: WARNING: config: TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.]
+[2026-06-28 21:01:00,214: INFO: prediction: Prediction result calculated: Normal / Healthy with confidence 82.28%]
+[2026-06-28 21:01:00,214: INFO: _internal: 127.0.0.1 - - [28/Jun/2026 21:01:00] "POST /predict HTTP/1.1" 200 -]
+[2026-06-28 21:01:10,621: INFO: prediction: Initializing prediction pipeline inference execution...]
+[2026-06-28 21:01:11,228: INFO: prediction: Prediction result calculated: COVID-19 Positive with confidence 99.19%]
+[2026-06-28 21:01:11,228: INFO: _internal: 127.0.0.1 - - [28/Jun/2026 21:01:11] "POST /predict HTTP/1.1" 200 -]
+[2026-06-28 21:01:21,051: INFO: prediction: Initializing prediction pipeline inference execution...]
+[2026-06-28 21:01:21,670: INFO: prediction: Prediction result calculated: Normal / Healthy with confidence 98.66%]
+[2026-06-28 21:01:21,670: INFO: _internal: 127.0.0.1 - - [28/Jun/2026 21:01:21] "POST /predict HTTP/1.1" 200 -]
