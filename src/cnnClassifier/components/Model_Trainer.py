@@ -3,6 +3,8 @@ from pathlib import Path
 from cnnClassifier import logger
 from cnnClassifier.entity.config_entity import TrainingConfig
 from model_architecture.model1_architecture import build_model
+import os
+import json
 
 
 
@@ -13,6 +15,7 @@ class ModelTrainer:
     def train(self):
         # 1. Load the transformed datasets
         train_ds = tf.data.Dataset.load(str(self.config.training_data))
+        val_ds=tf.data.Dataset.load(str(self.config.val_data))
         
         # 2. Build the model from the architecture file
         model = build_model(
@@ -22,10 +25,17 @@ class ModelTrainer:
         )
         
         # 3. Train
-        model.fit(
-            train_ds,
-            epochs=self.config.params_epochs
-        )
+        # model.fit(
+        #     train_ds,
+        #     epochs=self.config.params_epochs
+        # )
+        # Inside your train() method in model_trainer.py:
+        history = model.fit(train_ds, validation_data=val_ds, epochs=self.config.params_epochs)
+
+        # Save history dictionary as json
+        history_path = os.path.join(self.config.root_dir, "history.json")
+        with open(history_path, "w") as f:
+            json.dump(history.history, f)
         
         # 4. Save model
         model.save(self.config.trained_model_path)

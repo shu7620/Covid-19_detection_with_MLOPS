@@ -4,6 +4,7 @@ from cnnClassifier.entity.config_entity import DataIngestionConfig
 from cnnClassifier.entity.config_entity import DataValidationConfig
 from cnnClassifier.entity.config_entity import DataTransformationConfig
 from cnnClassifier.entity.config_entity import TrainingConfig
+from cnnClassifier.entity.config_entity import EvaluationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -75,6 +76,7 @@ class ConfigurationManager:
             root_dir=Path(config.root_dir),
             trained_model_path= Path(config.trained_model_path),
             training_data= Path(config.training_data),
+            val_data=Path(config.val_data),
             params_epochs= params.EPOCHS,
             params_batch_size= params.BATCH_SIZE,
             params_is_augmentation= params.AUGMENTATION,
@@ -84,5 +86,25 @@ class ConfigurationManager:
 
         return training_config
 
+
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = self.config.model_evaluation
+        
+        
+
+        create_directories([eval_config.root_dir, eval_config.plots_dir])
+
+        evaluation_config= EvaluationConfig(
+            root_dir=Path(eval_config.root_dir),
+            test_data_path=Path(eval_config.test_data_path),
+            model_path=Path(eval_config.model_path),
+            history_path=Path(eval_config.history_path),
+            plots_dir=Path(eval_config.plots_dir),
+            mlflow_uri="https://dagshub.com/shu7620/Covid-19_detection_with_MLOPS.mlflow",
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        
+        return evaluation_config
 
      
