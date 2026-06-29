@@ -1,0 +1,18 @@
+# Ignore python virtual environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.git/
+.env
+
+# Block the massive 16GB raw and transformed datasets entirely
+artifacts/data_ingestion/
+artifacts/data_transformation/
+artifacts/model_evaluation/
+
+
+
+# Allow the data validation status file for the quality gate check
+!artifacts/data_validation/
+!artifacts/data_validation/status.txt

@@ -5,8 +5,8 @@ __pyache__
 pyproject.toml
 uv.lock
 
-artifacts
+
 
 
 .env
-artifacts
+artifacts/
