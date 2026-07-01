@@ -1,12 +1,14 @@
 import os
 import pytest
 from pathlib import Path
+from tensorflow.keras.models import load_model
 from cnnClassifier.config.configuration import ConfigurationManager
-from model_architecture.model1_architecture import build_model
+# Ensure this import matches your exact file structure
+from model_architecture.model2_architecture import build_model 
 from cnnClassifier.pipeline.prediction import PredictionPipeline
 from cnnClassifier import logger
 
-# 1. Test Data Integrity Gate (Passes because status.txt is whitelisted)
+# 1. Test Data Integrity Gate
 def test_data_validation_status():
     status_file_path = Path("artifacts/data_validation/status.txt")
     assert status_file_path.exists(), "Data validation status file missing."
@@ -24,20 +26,28 @@ def test_model_architecture_compilation():
     assert model is not None
     assert model.output_shape == (None, classes)
 
-# 3. NEW: Inference Pipeline Sanity Check (Replaces the heavy training test)
+# 3. Inference Pipeline Sanity Check
 def test_prediction_pipeline_sanity():
     """
     Verifies that the inference engine can successfully ingest an image,
-    preprocess it, and return a valid structural dictionary prediction.
+    preprocess it, and return a valid structural dictionary prediction
+    using the cached model binary.
     """
-    # Point to one of your lightweight sample images
-    sample_img_path = "tests/sample_data/normal_sample.png"
+    sample_img_path = "tests\sample_data\Normal-28.png"
+    model_path = "artifacts/training/model.keras"
     
-    # Skip the test if you haven't dropped a sample image in the folder yet
+    # Skip the test if structural dependencies are missing locally
     if not os.path.exists(sample_img_path):
         pytest.skip("Sample test image not found in tests/sample_data/")
         
-    predictor = PredictionPipeline(filename=sample_img_path)
+    if not os.path.exists(model_path):
+        pytest.skip("Model artifact missing from artifacts/training/. Run training or S3 pull first.")
+        
+    # Load the model artifact once for the test session execution context
+    trained_model = load_model(model_path)
+        
+    # Pass BOTH the file path and the loaded model object into the pipeline
+    predictor = PredictionPipeline(filename=sample_img_path, model=trained_model)
     result = predictor.predict()
     
     assert isinstance(result, dict), "Prediction output should be a dictionary."
